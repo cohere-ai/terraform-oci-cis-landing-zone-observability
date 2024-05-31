@@ -103,7 +103,7 @@ alarms_configuration = {
         { protocol = "EMAIL"
           values = ["email.address@example.com"]
           #defined_tags = null
-          #freeform_tags = null 
+          #freeform_tags = null
         }
       ]
       #defined_tags = null

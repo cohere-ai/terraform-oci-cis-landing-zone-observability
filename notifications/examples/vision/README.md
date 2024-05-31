@@ -10,7 +10,7 @@ This example shows how to deploy notifications in OCI for a hypothetical Vision 
 1. Rename *input.auto.tfvars.template* to *\<project-name\>.auto.tfvars*, where *\<project-name\>* is any name of your choice.
 
 2. Within *\<project-name\>.auto.tfvars*, provide tenancy connectivity information and adjust the *notifications_configuration* input variable, by making the appropriate substitutions:
-   - Replace *\<REPLACE-BY-COMPARTMENT-OCID\>* placeholders by appropriate compartment OCIDs. 
+   - Replace *\<REPLACE-BY-COMPARTMENT-OCID\>* placeholders by appropriate compartment OCIDs.
    - Replace *email.address@example.com* by actual email addresses.
    - Replace *\<REPLACE-BY-MOBILE-PHONE-NUMBER\>* placeholder with an actual mobile number for SMS notifications.
 

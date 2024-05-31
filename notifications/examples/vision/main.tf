@@ -2,6 +2,6 @@
 # Licensed under the Universal Permissive License v 1.0 as shown at https://oss.oracle.com/licenses/upl.
 
 module "vision_notifications" {
-  source               = "../../"
+  source                      = "../../"
   notifications_configuration = var.notifications_configuration
 }

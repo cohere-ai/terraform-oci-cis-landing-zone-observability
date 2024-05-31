@@ -4,7 +4,7 @@
 #--------------------------------------------------------------------------------------------------------------------------------------
 # 1. Rename this file to <project-name>.auto.tfvars, where <project-name> is a name of your choice.
 # 2. Provide values for "Tenancy Connectivity Variables".
-# 3. Replace <REPLACE-BY-COMPARTMENT-OCID> placeholders by appropriate compartment OCIDs. 
+# 3. Replace <REPLACE-BY-COMPARTMENT-OCID> placeholders by appropriate compartment OCIDs.
 # 4. Replace <REPLACE-BY-VAULT-KEY-OCID> placeholder by an appropriate vault key OCID.
 # 5. Replace <REPLACE-BY-SUBNET-OCID> placeholder by an appropriate subnet OCID.
 # 6. Replace <REPLACE-BY-NSG-OCID> placeholder by an appropriate network security group OCID.

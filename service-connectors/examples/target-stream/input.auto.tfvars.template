@@ -4,7 +4,7 @@
 #--------------------------------------------------------------------------------------------------------------------------------------
 # 1. Rename this file to <project-name>.auto.tfvars, where <project-name> is a name of your choice.
 # 2. Provide values for "Tenancy Connectivity Variables".
-# 3. Replace <REPLACE-BY-COMPARTMENT-OCID> placeholders by appropriate compartment OCIDs. 
+# 3. Replace <REPLACE-BY-COMPARTMENT-OCID> placeholders by appropriate compartment OCIDs.
 #--------------------------------------------------------------------------------------------------------------------------------------
 
 #---------------------------------------
@@ -36,11 +36,11 @@ service_connectors_configuration = {
         kind = "logging"
         audit_logs = [
           {cmp_id = "ALL"} # "ALL" means all tenancy audit logs.
-        ] 
+        ]
         non_audit_logs = [
           {cmp_id = "<REPLACE-BY-COMPARTMENT-OCID>"}, # Compartment where logs are stored. Add as manay as needed.
           {cmp_id = "<REPLACE-BY-COMPARTMENT-OCID>"} # Compartment where logs are stored, if different than the previous one above.
-        ] 
+        ]
       }
       target = {
         kind = "streaming"

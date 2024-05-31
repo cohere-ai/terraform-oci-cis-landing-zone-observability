@@ -10,11 +10,11 @@ locals {
         source : {
           kind : "logging"
           audit_logs : [
-            {cmp_id : "ALL"} # "ALL" means all tenancy audit logs. Only applicable if kind = "logging".
-          ]   
-          non_audit_logs : [for ocid in var.logs_compartment_ocids : 
-            {cmp_id = ocid} # Bucket logs, flow logs compartment - 
-          ] 
+            { cmp_id : "ALL" } # "ALL" means all tenancy audit logs. Only applicable if kind = "logging".
+          ]
+          non_audit_logs : [for ocid in var.logs_compartment_ocids :
+            { cmp_id = ocid } # Bucket logs, flow logs compartment -
+          ]
         }
         target : {
           kind : "streaming"
@@ -24,15 +24,15 @@ locals {
         }
       }
     }
-  } 
-} 
+  }
+}
 
 module "vision_connector" {
-  source         = "../../service-connectors/"
+  source = "../../service-connectors/"
   providers = {
-    oci = oci
+    oci      = oci
     oci.home = oci.home
   }
-  tenancy_ocid     = var.tenancy_ocid
+  tenancy_ocid                     = var.tenancy_ocid
   service_connectors_configuration = local.service_connectors_configuration
 }

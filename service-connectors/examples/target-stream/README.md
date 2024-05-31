@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This example shows how to deploy a service connector in OCI that utilizes a managed stream as target. 
+This example shows how to deploy a service connector in OCI that utilizes a managed stream as target.
 
 It deploys one service connector with the following characteristics:
 - Captures logging data from audit logs tenancy wide.
@@ -15,8 +15,8 @@ An Identity and Access Management (IAM) policy is deployed in the tenancy home r
 1. Rename *input.auto.tfvars.template* to *\<project-name\>.auto.tfvars*, where *\<project-name\>* is any name of your choice.
 
 2. Within *\<project-name\>.auto.tfvars*, provide tenancy connectivity information and adjust the *service_connectors_configuration* input variable, by making the appropriate substitutions:
-   - Replace *\<REPLACE-BY-COMPARTMENT-OCID\>* placeholders by appropriate compartment OCIDs. 
-   
+   - Replace *\<REPLACE-BY-COMPARTMENT-OCID\>* placeholders by appropriate compartment OCIDs.
+
 Refer to [Service Connectors module README.md](../../README.md) for overall attributes usage.
 
 3. In this folder, run the typical Terraform workflow:

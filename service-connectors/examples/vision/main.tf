@@ -2,11 +2,11 @@
 # Licensed under the Universal Permissive License v 1.0 as shown at https://oss.oracle.com/licenses/upl.
 
 module "vision_connector" {
-  source         = "../.."
+  source = "../.."
   providers = {
-    oci = oci
+    oci      = oci
     oci.home = oci.home
   }
-  tenancy_ocid     = var.tenancy_ocid
+  tenancy_ocid                     = var.tenancy_ocid
   service_connectors_configuration = var.service_connectors_configuration
 }

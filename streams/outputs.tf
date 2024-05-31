@@ -3,10 +3,10 @@
 
 output "streams" {
   description = "The streams."
-  value = var.enable_output ? oci_streaming_stream.these : null
+  value       = var.enable_output ? oci_streaming_stream.these : null
 }
 
 output "stream_pools" {
   description = "The (custom) stream pools."
-  value = var.enable_output ? oci_streaming_stream_pool.these : null
+  value       = var.enable_output ? oci_streaming_stream_pool.these : null
 }

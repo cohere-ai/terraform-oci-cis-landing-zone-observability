@@ -13,6 +13,6 @@ locals {
 }
 
 module "vision_streams" {
-  source               = "../../streams/"
+  source                = "../../streams/"
   streams_configuration = local.streams_configuration
 }

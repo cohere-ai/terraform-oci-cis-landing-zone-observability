@@ -2,7 +2,7 @@
 
 ![Landing Zone logo](../landing_zone_300.png)
 
-This module manages monitoring alarms in Oracle Cloud Infrastructure (OCI) based on a single configuration object. Alarms enable the active and passive monitoring of OCI resources. OCI Monitoring service uses metrics to monitor resources and alarms to notify interested parties when these metrics meet alarm-specified triggers. Alarms are an important consideration for gaining visibility about the health, capacity and performance of OCI resources, allowing for an informed and agile infrastructure management approach. 
+This module manages monitoring alarms in Oracle Cloud Infrastructure (OCI) based on a single configuration object. Alarms enable the active and passive monitoring of OCI resources. OCI Monitoring service uses metrics to monitor resources and alarms to notify interested parties when these metrics meet alarm-specified triggers. Alarms are an important consideration for gaining visibility about the health, capacity and performance of OCI resources, allowing for an informed and agile infrastructure management approach.
 
 Check [module specification](./SPEC.md) for a full description of module requirements, supported variables, managed resources and outputs.
 
@@ -17,7 +17,7 @@ Check the [examples](./examples/) folder for actual module usage.
 ## <a name="requirements">Requirements</a>
 ### IAM Permissions
 
-This module requires the following OCI IAM permissions in the compartments where alarms, topics, and streams are defined. 
+This module requires the following OCI IAM permissions in the compartments where alarms, topics, and streams are defined.
 
 For deploying alarms:
 ```
@@ -58,7 +58,7 @@ experiments = [module_variable_optional_attrs]
 ```
 ## <a name="invoke">How to Invoke the Module</a>
 
-Terraform modules can be invoked locally or remotely. 
+Terraform modules can be invoked locally or remotely.
 
 For invoking the module locally, just set the module *source* attribute to the module file path (relative path works). The following example assumes the module is two folders up in the file system.
 ```
@@ -85,8 +85,8 @@ In this module, alarms are defined using the *alarms_configuration* object, that
 - **default_compartment_id**: the default compartment for all resources managed by this module. It can be overriden by *compartment_id* attribute in each resource. This attribute is overloaded. It can be assigned either a literal OCID or a reference (a key) to an OCID. The reserved key "TENANCY-ROOT" references the root compartment OCID. When "TENANCY-ROOT" is utilized, variable *tenancy_ocid* is required.
 - **default_defined_tags**: the default defined tags that are applied to all resources managed by this module. It can be overriden by *defined_tags* attribute in each resource.
 - **default_freeform_tags**: the default freeform tags that are applied to all resources managed by this module. It can be overriden by *freeform_tags* attribute in each resource.
-- **alarms**: define the alarms to capture and where to send them. 
-- **topics**: define the topics managed by this module that can be used as alarm destinations. 
+- **alarms**: define the alarms to capture and where to send them.
+- **topics**: define the topics managed by this module that can be used as alarm destinations.
 - **streams**: define the streams managed by this module that can be used as alarm destinations.
 
 **Note**: Each alarm, topic and stream are defined as an object whose key must be unique and must not be changed once defined. As a convention, use uppercase strings for the keys.
@@ -112,21 +112,21 @@ Use *display_name* attribute to name alarms.
 
 ### Defining Where to Send the Triggered Alarms
 
-Within the *alarms* attribute, use *destination_topic_ids* and *destination_stream_ids* attributes to define where to send triggered alarms. 
+Within the *alarms* attribute, use *destination_topic_ids* and *destination_stream_ids* attributes to define where to send triggered alarms.
 
 - **destination_topic_ids**: a list of topics to send alarms to. This attribute is overloaded, i.e., it can be assigned a literal OCID or a reference (a key) to an OCID. When assigned a reference, the module first looks up for the reference in the *topics* attribute for internally managed topics. Then it looks up in the *topics_dependency* variable for externally managed topics.
 - **destination_stream_ids**: a list of streams to send alarms to. This attribute is overloaded, i.e., it can be assigned a literal OCID or a reference (a key) to an OCID. When assigned a reference, the module first looks up for the reference in the *streams* attribute for internally managed streams. Then it looks up in the *stream_dependency* variable for externally managed streams.
 
-The example below shows the two destination types. Note that you can mix and match multiple OCIDs and references. 
+The example below shows the two destination types. Note that you can mix and match multiple OCIDs and references.
 ```
-destination_topic_ids = ["ocid1.onstopic.oc1.iad.aaaaaa...j5q","NETWORK-TOPIC-KEY"] 
-destination_stream_ids = ["ocid1.stream.oc1.iad.aaaaaa...ijk","NETWORK-STREAM-KEY"] 
+destination_topic_ids = ["ocid1.onstopic.oc1.iad.aaaaaa...j5q","NETWORK-TOPIC-KEY"]
+destination_stream_ids = ["ocid1.stream.oc1.iad.aaaaaa...ijk","NETWORK-STREAM-KEY"]
 ```
 
 ## Defining Alarm Destinations
 Within *alarms_configuration*, use the *topics* and *streams* attributes to define the topics and streams destinations managed by this module.
 
-**Each topic and stream is defined as an object whose key must be unique and must not be changed once defined**. As a convention, use uppercase strings for the keys. 
+**Each topic and stream is defined as an object whose key must be unique and must not be changed once defined**. As a convention, use uppercase strings for the keys.
 
 For each topic in the *topics* attribute, you can define their associated *subscriptions*, by specifying  respective *protocol* and *values*. Supported protocols are *EMAIL*, *CUSTOM_HTTPS*, *PAGERDUTY*, *SLACK*, *ORACLE_FUNCTIONS*, *SMS*. Look at https://docs.oracle.com/en-us/iaas/Content/Notification/Tasks/create-subscription.htm for details on protocol requirements.
 
@@ -138,9 +138,9 @@ topics = {
     compartment_id = "ocid1.compartment.oc1..aaaaaa...4ja"
     subscriptions = [
       { protocol = "EMAIL", values = ["email.address@example.com"]}
-    ]  
+    ]
   }
-}    
+}
 ```
 
 For managed streams, it is possible to specify the number of partitions and the retention (in hours), Their default values are 1 partition and 24 hours, respectively.
@@ -170,7 +170,7 @@ Here's a sample configuration for sending pre-configured alarms of type "vpn-sta
 ```
 alarms_configuration = {
   default_compartment_id = "ocid1.compartment.oc1..aaaaaa...4ja"
-  
+
   alarms = {
     NETWORK-ALARM-VPN-STATUS-KEY = {
       display_name = "vpn-status-alarm"
@@ -189,7 +189,7 @@ alarms_configuration = {
       ]
     }
   }
-} 
+}
 ```
 
 ## <a name="related">Related Documentation</a>

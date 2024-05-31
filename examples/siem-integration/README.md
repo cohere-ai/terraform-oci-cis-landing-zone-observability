@@ -1,6 +1,6 @@
 # SIEM Integration Example
 
-This example manages the infrastructure resources for integrating OCI logs and events to an external SIEM (Security Information and Event Management) service. 
+This example manages the infrastructure resources for integrating OCI logs and events to an external SIEM (Security Information and Event Management) service.
 It does so using [Events](https://github.com/oracle-quickstart/terraform-oci-cis-landing-zone-observability/blob/main/events), [Streams](https://github.com/oracle-quickstart/terraform-oci-cis-landing-zone-observability/blob/main/streams) and [Service Connectors](https://github.com/oracle-quickstart/terraform-oci-cis-landing-zone-observability/service-connectors/blob/main/service-connectors) modules in the CIS OCI Foundations Benchmark Modules Collection.
 
 The module creates the following resources:
@@ -19,7 +19,7 @@ The pattern is illustrated in the diagram below:
 1. Rename *input.auto.tfvars.template* to *\<project-name\>.auto.tfvars*, where *\<project-name\>* is any name of your choice.
 
 2. Within *\<project-name\>.auto.tfvars*, provide tenancy connectivity information and adjust the required variables, by making the appropriate substitutions:
-   - Replace *\<REPLACE-BY-COMPARTMENT-OCID\>* placeholders by appropriate compartment OCIDs. 
+   - Replace *\<REPLACE-BY-COMPARTMENT-OCID\>* placeholders by appropriate compartment OCIDs.
 
 3. In this folder, run the typical Terraform workflow:
 ```

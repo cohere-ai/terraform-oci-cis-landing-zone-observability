@@ -5,7 +5,7 @@
 # 1. Rename this file to <project-name>.auto.tfvars, where <project-name> is a name of your choice.
 # 2. Provide values for "Tenancy Connectivity Variables".
 # 3. Replace <REPLACE-BY-COMPARTMENT-OCID> placeholders by appropriate compartment OCIDs. Or utilize the reserved key "TENANCY-ROOT" for the root compartment OCID.
-# 4. Replace <REPLACE-BY-COMPARTMENT-OCID-TO-FILTER-ON> placeholder by appropriate compartment OCID. 
+# 4. Replace <REPLACE-BY-COMPARTMENT-OCID-TO-FILTER-ON> placeholder by appropriate compartment OCID.
 # 5. Replace email.address@example.com by actual email addresses.
 #---------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -25,12 +25,12 @@ region               = "<your tenancy region>"      # This is your region, where
 # Input variable
 #---------------------------------------
 
-events_configuration = { 
-  
+events_configuration = {
+
   default_compartment_id = "<REPLACE-BY-COMPARTMENT-OCID>"
-  
+
   event_rules = {
-    APIGW-EVENTS-KEY = { 
+    APIGW-EVENTS-KEY = {
       is_enabled = true
       event_display_name = "notify-on-api-gateway-deployments"
       event_description = "Monitoring deployment changes in API Gateway"
@@ -48,11 +48,11 @@ events_configuration = {
       destination_topic_ids = ["APIGW-TOPIC-KEY"]
     }
   }
-    
+
   topics = {
     APIGW-TOPIC-KEY = {
       compartment_id = "<REPLACE-BY-COMPARTMENT-OCID>"
-      name = "apigw-topic" 
+      name = "apigw-topic"
       description = "Topic for API Gateway related notifications"
       subscriptions = [
         { protocol = "EMAIL"

@@ -4,7 +4,7 @@
 #--------------------------------------------------------------------------------------------------------------------------------------
 # 1. Rename this file to <project-name>.auto.tfvars, where <project-name> is a name of your choice.
 # 2. Provide values for "Tenancy Connectivity Variables".
-# 3. Replace <REPLACE-BY-COMPARTMENT-OCID> placeholders by appropriate compartment OCIDs. 
+# 3. Replace <REPLACE-BY-COMPARTMENT-OCID> placeholders by appropriate compartment OCIDs.
 # 4. Replace email.address@example.com by actual email addresses.
 # 5. Replace <REPLACE-BY-MOBILE-PHONE-NUMBER> placeholder with an actual mobile number for SMS notifications.
 #--------------------------------------------------------------------------------------------------------------------------------------
@@ -37,7 +37,7 @@ notifications_configuration = {
         { protocol = "EMAIL"
           values = ["email.address_1@example.com","email.address_2@example.com"]
           #defined_tags = null
-          #freeform_tags = null 
+          #freeform_tags = null
         }
       ]
       #defined_tags = null

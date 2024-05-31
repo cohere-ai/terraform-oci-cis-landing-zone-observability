@@ -10,7 +10,7 @@ data "oci_log_analytics_namespaces" "logging_analytics_namespaces" {
 }
 
 resource "oci_log_analytics_namespace" "this" {
-  count = coalesce(var.logging_configuration.onboard_logging_analytics, false) ? 1 : 0
+  count          = coalesce(var.logging_configuration.onboard_logging_analytics, false) ? 1 : 0
   compartment_id = var.tenancy_ocid
   is_onboarded   = local.logging_analytics.is_onboarded
   namespace      = data.oci_log_analytics_namespaces.logging_analytics_namespaces.namespace_collection[0].items[0].namespace

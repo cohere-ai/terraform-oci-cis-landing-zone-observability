@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This example shows how to deploy Notification resources in OCI using the [Notifications module](../..). It is functionally equivalent to [Vision example](../vision/), but it obtains its dependencies from an OCI Object Storage object, specified in *oci_compartments_object_name* variable. 
+This example shows how to deploy Notification resources in OCI using the [Notifications module](../..). It is functionally equivalent to [Vision example](../vision/), but it obtains its dependencies from an OCI Object Storage object, specified in *oci_compartments_object_name* variable.
 
 It deploys two topics:
 - A topic for network related notifications subscribed by two email addresses.
@@ -34,12 +34,12 @@ The OCI Object Storage object with compartment references is expected to have a 
 {
   "NETWORK-CMP" : {
     "id" : "ocid1.compartment.oc1..aaaaaa...tgr"
-  }    
+  }
   "SECURITY-CMP" : {
     "id" : "ocid1.compartment.oc1..aaaaaa...xuq"
   }
 }
-```   
+```
 
 Refer to [Notifications module README.md](../../README.md) for overall attributes usage.
 

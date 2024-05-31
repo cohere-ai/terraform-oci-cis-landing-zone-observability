@@ -24,7 +24,7 @@ region               = "<REPLACE-BY-YOUR-TENANCY-REGION>"      # This is your re
 
 logging_configuration = {
   default_compartment_id = "<REPLACE-WITH-COMPARTMENT-OCID>"
-  
+
   log_groups = {
     BUCKET-LOG-GROUP = {
       name = "bucket-log-group"
@@ -51,4 +51,3 @@ external_dependency = {
   cmp_dependency   = ["<REPLACE-BY-OBJECT-NAME>"]
 }
 */
-  

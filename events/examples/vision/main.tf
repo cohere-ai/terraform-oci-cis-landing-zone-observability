@@ -2,14 +2,14 @@
 # Licensed under the Universal Permissive License v 1.0 as shown at https://oss.oracle.com/licenses/upl.
 
 module "vision_events" {
-  source = "../../"
+  source               = "../../"
   events_configuration = var.events_configuration
-  tenancy_ocid = var.tenancy_ocid
+  tenancy_ocid         = var.tenancy_ocid
 }
 
 module "vision_home_region_events" {
-  source = "../../"
-  providers = { oci = oci.home }
+  source               = "../../"
+  providers            = { oci = oci.home }
   events_configuration = var.home_region_events_configuration
-  tenancy_ocid = var.tenancy_ocid
+  tenancy_ocid         = var.tenancy_ocid
 }

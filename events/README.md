@@ -2,7 +2,7 @@
 
 ![Landing Zone logo](../landing_zone_300.png)
 
-This module manages arbitrary events in Oracle Cloud Infrastructure (OCI) based on a single configuration object. Events enable automation based on state changes of OCI resources and are a recommendation of Center for Internet Security (CIS) OCI Foundations Benchmark for raising awareness about changes in Identity and Access Management (IAM) and networking resources. 
+This module manages arbitrary events in Oracle Cloud Infrastructure (OCI) based on a single configuration object. Events enable automation based on state changes of OCI resources and are a recommendation of Center for Internet Security (CIS) OCI Foundations Benchmark for raising awareness about changes in Identity and Access Management (IAM) and networking resources.
 
 Check [module specification](./SPEC.md) for a full description of module requirements, supported variables, managed resources and outputs.
 
@@ -62,7 +62,7 @@ experiments = [module_variable_optional_attrs]
 ```
 ## <a name="invoke">How to Invoke the Module</a>
 
-Terraform modules can be invoked locally or remotely. 
+Terraform modules can be invoked locally or remotely.
 
 For invoking the module locally, just set the module *source* attribute to the module file path (relative path works). The following example assumes the module is two folders up in the file system.
 ```
@@ -97,7 +97,7 @@ In this module, events are defined using the *events_configuration* object, that
 
 Within *event_rules*, the event types to capture can be specified in two ways: through pre-configured events categories or by supplying specific event types.
 
-- **pre-configured events categories**: use the *preconfigured_events_categories* attribute, assigning it a list of the following supported values: *iam*, *network*, *storage*, *database*, *exainfra*, *compute*, *budget* and *cloudguard*. For the list of event types in each of these categories, check [preconfigured_events.tf file](./preconfigured_events.tf). 
+- **pre-configured events categories**: use the *preconfigured_events_categories* attribute, assigning it a list of the following supported values: *iam*, *network*, *storage*, *database*, *exainfra*, *compute*, *budget* and *cloudguard*. For the list of event types in each of these categories, check [preconfigured_events.tf file](./preconfigured_events.tf).
 - **supplied events**: use the *supplied_events* attribute, assigning it a list of valid OCI event type names. Event type names are service specific. Look at [Service that Produce Events](https://docs.oracle.com/en-us/iaas/Content/Events/) for event types within each service.
 
 **Note**: *supplied_events* takes precedence over *preconfigured_events_categories*.
@@ -110,23 +110,23 @@ Use *event_display_name* to name the event rule and *event_description* for the 
 
 ### Events Filtering
 
-The module allows for the specified events (either pre-configured or explicitly supplied) to be filtered. You can filter by an attribute or by a defined tag assigned to the resource for which the event is triggered. Look at [Matching Events with Filters](https://docs.oracle.com/en-us/iaas/Content/Events/Concepts/filterevents.htm) for details. 
+The module allows for the specified events (either pre-configured or explicitly supplied) to be filtered. You can filter by an attribute or by a defined tag assigned to the resource for which the event is triggered. Look at [Matching Events with Filters](https://docs.oracle.com/en-us/iaas/Content/Events/Concepts/filterevents.htm) for details.
 
-For filtering by attribute, use *attributes_filter* attribute, providing a list of objects with attribute name and value. 
+For filtering by attribute, use *attributes_filter* attribute, providing a list of objects with attribute name and value.
 
 The example below matches events for resources with the specified *compartmentId* and *riskLevel*.
 ```
 attributes_filter = [
   {
-    attr = "compartmentId" 
+    attr = "compartmentId"
     value = ["ocid1.compartment.oc1..aaaaaa...cnq"]
   }
   {
-    attr = "riskLevel" 
-    value = ["CRITICAL"] 
+    attr = "riskLevel"
+    value = ["CRITICAL"]
   }
 ]
-```                     
+```
 For filtering by tag, use *tags_filter* atribute, providing a list of defined tags. Within each tag, provide the tag namespace and a list of tag names and values. The example below matches events for resources tagged with *CostCenter*="1" and *OracleEmail*="email.address@example.com" in the *OracleInternalReserved* namespace.
 ```
 tags_filter = [
@@ -138,16 +138,16 @@ tags_filter = [
 ```
 ## Defining Where to Send Events
 
-Within *event_rules* attribute, use the *destination_topic_ids*, *destination_stream_ids* and *destination_function_ids* attributes to define where to send captured events. 
+Within *event_rules* attribute, use the *destination_topic_ids*, *destination_stream_ids* and *destination_function_ids* attributes to define where to send captured events.
 
 - **destination_topic_ids**: a list of topics to send events to. This attribute is overloaded, i.e., it can be assigned a literal OCID or a reference (a key) to an OCID. When assigned a reference, the module first looks up for the reference in the *topics* attribute for internally managed topics. Then it looks up in the *topics_dependency* variable for externally managed topics.
 - **destination_stream_ids**: a list of streams to send events to. This attribute is overloaded, i.e., it can be assigned a literal OCID or a reference (a key) to an OCID. When assigned a reference, the module first looks up for the reference in the *streams* attribute for internally managed streams. Then it looks up in the *stream_dependency* variable for externally managed streams.
 - **destination_function_ids**: a list of OCI functions to send events to. This attribute is overloaded, i.e., it can be assigned a literal OCID or a reference (a key) to an OCID. When assigned a reference, the module looks up for the reference in the *functions_dependency* variable for externally managed functions.
 
-The example below shows the three destination types. Note that you can mix and match multiple OCIDs and references. 
+The example below shows the three destination types. Note that you can mix and match multiple OCIDs and references.
 ```
-destination_topic_ids = ["ocid1.onstopic.oc1.iad.aaaaaa...j5q", "NETWORK-TOPIC-KEY"] 
-destination_stream_ids = ["ocid1.stream.oc1.iad.aaaaaa...ijk", "NETWORK-STREAM-KEY"] 
+destination_topic_ids = ["ocid1.onstopic.oc1.iad.aaaaaa...j5q", "NETWORK-TOPIC-KEY"]
+destination_stream_ids = ["ocid1.stream.oc1.iad.aaaaaa...ijk", "NETWORK-STREAM-KEY"]
 destination_function_ids = ["ocid1.fnfunc.oc1.iad.aaaaaa...3bq", "NETWORK-FUNCTION-KEY"]
 ```
 
@@ -155,7 +155,7 @@ destination_function_ids = ["ocid1.fnfunc.oc1.iad.aaaaaa...3bq", "NETWORK-FUNCTI
 
 Within *events_configuration*, use the *topics* and *streams* attributes to define the topics and streams destinations managed by this module.
 
-**Each topic and stream is defined as an object whose key must be unique and must not be changed once defined**. As a convention, use uppercase strings for the keys. 
+**Each topic and stream is defined as an object whose key must be unique and must not be changed once defined**. As a convention, use uppercase strings for the keys.
 
 For each topic in the *topics* attribute, you can define their associated *subscriptions*, by specifying  respective *protocol* and *values*. Supported protocols are *EMAIL*, *CUSTOM_HTTPS*, *PAGERDUTY*, *SLACK*, *ORACLE_FUNCTIONS*, *SMS*. Look at https://docs.oracle.com/en-us/iaas/Content/Notification/Tasks/create-subscription.htm for details on protocol requirements.
 
@@ -167,9 +167,9 @@ topics = {
     name = "vision-network-topic"
     subscriptions = [
       { protocol = "EMAIL", values = ["email.address@example.com"]}
-    ]  
+    ]
   }
-}    
+}
 ```
 
 For managed streams, it is possible to specify the number of partitions and the retention (in hours), Their default values are 1 partition and 24 hours, respectively.
@@ -197,12 +197,12 @@ Here's a sample setting as shown in [api-gateway-events example](./examples/api-
 The resulting events are sent to a topic defined by *APIGW-TOPIC-KEY* (*actions_topics* attribute) that is managed in the same configuration. The managed topic is named *apigw-topic* and subscribed by a single email address (*topics* attribute).
 
 ```
-events_configuration = { 
-  
+events_configuration = {
+
   default_compartment_id = "ocid1.compartment.oc1..aaaaaa...4ja"
-  
+
   event_rules = {
-    APIGW-EVENTS-KEY = { 
+    APIGW-EVENTS-KEY = {
       event_display_name = "notify-on-api-gateway-deployments"
       event_description = "Monitoring deployment changes in API Gateway"
       supplied_events = ["com.oraclecloud.apigateway.createdeployment.end","com.oraclecloud.apigateway.deletedeployment.end","com.oraclecloud.apigateway.updatedeployment.end"]
@@ -219,11 +219,11 @@ events_configuration = {
       destination_topic_ids = ["APIGW-TOPIC-KEY"]
     }
   }
-    
+
   topics = {
     APIGW-TOPIC-KEY = {
       compartment_ocid = ""ocid1.compartment.oc1..aaaaaa...6kc""
-      name = "apigw-topic" 
+      name = "apigw-topic"
       description = "Topic for API Gateway related notifications"
       subscriptions = [
         { protocol = "EMAIL"
@@ -232,7 +232,7 @@ events_configuration = {
       ]
     }
   }
-}  
+}
 ```
 
 ## <a name="related">Related Documentation</a>

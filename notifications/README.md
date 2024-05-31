@@ -2,7 +2,7 @@
 
 ![Landing Zone logo](../landing_zone_300.png)
 
-This module manages notification topics and subscriptions in Oracle Cloud Infrastructure (OCI) based on a single configuration object. OCI Notifications service enables the configuration of communication channels for publishing messages using topics and subscriptions. When a message is published to a topic, the Notifications service sends the message to all of the topic's subscriptions. 
+This module manages notification topics and subscriptions in Oracle Cloud Infrastructure (OCI) based on a single configuration object. OCI Notifications service enables the configuration of communication channels for publishing messages using topics and subscriptions. When a message is published to a topic, the Notifications service sends the message to all of the topic's subscriptions.
 
 Check [module specification](./SPEC.md) for a full description of module requirements, supported variables, managed resources and outputs.
 
@@ -45,7 +45,7 @@ experiments = [module_variable_optional_attrs]
 ```
 ## <a name="invoke">How to Invoke the Module</a>
 
-Terraform modules can be invoked locally or remotely. 
+Terraform modules can be invoked locally or remotely.
 
 For invoking the module locally, just set the module *source* attribute to the module file path (relative path works). The following example assumes the module is two folders up in the file system.
 ```
@@ -72,14 +72,14 @@ In this module, notifications are defined using the *notifications_configuration
 - **default_compartment_id**: the default compartment for all resources managed by this module. It can be overriden by *compartment_id* attribute in each resource. This attribute is overloaded. It can be assigned either a literal OCID or a reference (a key) to an OCID.
 - **default_defined_tags**: the default defined tags that are applied to all resources managed by this module. It can be overriden by *defined_tags* attribute in each resource.
 - **default_freeform_tags**: the default freeform tags that are applied to all resources managed by this module. It can be overriden by *freeform_tags* attribute in each resource.
-- **topics**: define the notification topics and associated subscriptions. 
+- **topics**: define the notification topics and associated subscriptions.
 
 ## Defining Notification Topics and Subscriptions
 
 Within *notifications_configuration*, use the *topics* attribute to define the topics and subscriptions managed by this module. Each topic is defined as an object whose key must be unique and must not be changed once defined. As a convention, use uppercase strings for the keys.
 
 The *topics* attribute supports the following attributes:
-- **compartment_id**: the compartment where the topic is created. *default_compartment_id* is used if undefined. This attribute is overloaded. It can be assigned either a literal OCID or a reference (a key) to an OCID. 
+- **compartment_id**: the compartment where the topic is created. *default_compartment_id* is used if undefined. This attribute is overloaded. It can be assigned either a literal OCID or a reference (a key) to an OCID.
 - **name**: the topic name.
 - **description**: the topic description. It defaults to topic *name*- if undefined.
 - **subscriptions**: the topic subscriptions, supporting the following attributes:
@@ -98,7 +98,7 @@ An optional feature, external dependencies are resources managed elsewhere that 
 
 ## An Example
 
-The following snippet defines two topics in different compartments defined by *compartment_id* values. The first topic (*NETWORK-TOPIC*) is for network related notifications. It is subscribed by two email addresses. The second topic (*SECURITY-TOPIC*) is for security related notifications. It is subscribed by one SMS number. 
+The following snippet defines two topics in different compartments defined by *compartment_id* values. The first topic (*NETWORK-TOPIC*) is for network related notifications. It is subscribed by two email addresses. The second topic (*SECURITY-TOPIC*) is for security related notifications. It is subscribed by one SMS number.
 
 Supported protocols are *EMAIL*, *CUSTOM_HTTPS*, *PAGERDUTY*, *SLACK*, *ORACLE_FUNCTIONS*, *SMS*. Look at https://docs.oracle.com/en-us/iaas/Content/Notification/Tasks/create-subscription.htm for details on protocol requirements.
 
@@ -109,7 +109,7 @@ notifications_configuration = {
     NETWORK-TOPIC = {
       compartment_id = "ocid1.compartment.oc1..aaaaaa...tgr"
       name = "cislz-network-topic"
-      subscriptions = [{ 
+      subscriptions = [{
         protocol = "EMAIL"
         values = ["email.address_1@example.com","email.address_2@example.com"]
       }]
@@ -117,14 +117,14 @@ notifications_configuration = {
     SECURITY-TOPIC = {
       compartment_id = "ocid1.compartment.oc1..aaaaaa...xuq"
       name = "cislz-security-topic"
-      subscriptions = [{ 
+      subscriptions = [{
         protocol = "SMS"
         values = ["+19999999999"]
       }]
     }
   }
 }
-    
+
 ```
 
 ## <a name="related">Related Documentation</a>

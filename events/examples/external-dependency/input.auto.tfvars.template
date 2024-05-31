@@ -9,9 +9,9 @@
 # 4. Replace <REPLACE-BY-TOPIC-REFERENCE> placeholders by the appropriate topic references,
 #    expected to be found in the OCI Object Storage object specified in oci_topics_dependency.
 # 5. Replace <REPLACE-BY-BUCKET-NAME> placeholder by the OCI Object Storage bucket for configuration sharing across modules.
-# 6. Replace <REPLACE-BY-OBJECT-NAME-FOR-COMPARTMENTS> placeholder by the OCI Object Storage object with the compartments references. This 
+# 6. Replace <REPLACE-BY-OBJECT-NAME-FOR-COMPARTMENTS> placeholder by the OCI Object Storage object with the compartments references. This
 #    object is typically stored in OCI Object Storage by the module that manages compartments.
-# 7. Replace <REPLACE-BY-OBJECT-NAME-FOR-TOPICS> placeholder by the OCI Object Storage object to with the topic references. This 
+# 7. Replace <REPLACE-BY-OBJECT-NAME-FOR-TOPICS> placeholder by the OCI Object Storage object to with the topic references. This
 #    object is typically stored in OCI Object Storage by the module that manages topics.
 #-------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -32,14 +32,14 @@ region               = "<your tenancy region>"      # This is your region, where
 # Input variable
 #---------------------------------------
 
-events_configuration = { 
-  
+events_configuration = {
+
   default_compartment_id = "TENANCY-ROOT"
   #default_defined_tags   = null
   #default_freeform_tags  = null
 
   event_rules = {
-    NETWORK-EVENTS-KEY = { 
+    NETWORK-EVENTS-KEY = {
       #compartment_id = null
       #is_enabled = true
       event_display_name = "vision-notify-on-network-changes-rule"
@@ -54,30 +54,30 @@ events_configuration = {
       #defined_tags = null
       #freeform_tags = null
     }
-    STORAGE-EVENTS-KEY = { 
+    STORAGE-EVENTS-KEY = {
       compartment_id = "<REPLACE-BY-COMPARTMENT-REFERENCE>"
       event_display_name = "vision-notify-on-storage-changes-rule"
       preconfigured_events_categories = ["storage"] # this defines the set of event rules that are configured
       destination_topic_ids = ["<REPLACE-BY-TOPIC-REFERENCE>"]
     }
-    DATABASE-EVENTS-KEY = { 
+    DATABASE-EVENTS-KEY = {
       compartment_id = "<REPLACE-BY-COMPARTMENT-REFERENCE>"
       event_display_name = "vision-notify-on-database-changes-rule"
       preconfigured_events_categories = ["database"] # this defines the set of event rules that are configured
       destination_topic_ids = ["<REPLACE-BY-TOPIC-REFERENCE>"]
     }
-    EXAINFRA-EVENTS-KEY = { 
+    EXAINFRA-EVENTS-KEY = {
       compartment_id = "<REPLACE-BY-COMPARTMENT-REFERENCE>"
       event_display_name = "vision-notify-on-exainfra-changes-rule"
       preconfigured_events_categories = ["exainfra"] # this defines the set of event rules that are configured
       destination_topic_ids = ["<REPLACE-BY-TOPIC-REFERENCE>"]
     }
-    BUDGET-EVENTS-KEY = { 
+    BUDGET-EVENTS-KEY = {
       event_display_name = "vision-notify-on-budget-changes-rule"
       preconfigured_events_categories = ["budget"] # this defines the set of event rules that are configured
       destination_topic_ids = ["<REPLACE-BY-TOPIC-REFERENCE>"]
     }
-    COMPUTE-EVENTS-KEY = { 
+    COMPUTE-EVENTS-KEY = {
       compartment_id = "<REPLACE-BY-COMPARTMENT-REFERENCE>"
       event_display_name = "vision-notify-on-compute-changes-rule"
       preconfigured_events_categories = ["compute"] # this defines the set of event rules that are configured
@@ -86,17 +86,17 @@ events_configuration = {
   }
 }
 
-home_region_events_configuration = { 
-  
+home_region_events_configuration = {
+
   default_compartment_id = "TENANCY-ROOT"
-  
+
   event_rules = {
-    IAM-EVENTS-KEY = { 
+    IAM-EVENTS-KEY = {
       event_display_name = "vision-notify-on-iam-changes-rule"
       preconfigured_events_categories = ["iam"] # this defines the set of event rules that are configured
       destination_topic_ids = ["<REPLACE-BY-TOPIC-REFERENCE>"]
-      }  
-    CLOUDGUARD-EVENTS-KEY = { 
+      }
+    CLOUDGUARD-EVENTS-KEY = {
       event_display_name = "vision-notify-on-cloudguard-events-rule"
       preconfigured_events_categories = ["cloudguard"] # this defines the set of event rules that are configured
       attributes_filter = [{

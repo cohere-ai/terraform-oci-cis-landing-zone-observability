@@ -2,11 +2,11 @@
 # Licensed under the Universal Permissive License v 1.0 as shown at https://oss.oracle.com/licenses/upl.
 
 output "events" {
-  value = merge(module.vision_events.events,module.vision_home_region_events.events)
+  value = merge(module.vision_events.events, module.vision_home_region_events.events)
 }
 
 output "topics" {
-  value = merge(module.vision_events.topics,module.vision_home_region_events.topics)
+  value = merge(module.vision_events.topics, module.vision_home_region_events.topics)
 }
 
 output "streams" {

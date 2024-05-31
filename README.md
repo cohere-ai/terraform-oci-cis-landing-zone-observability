@@ -12,7 +12,7 @@ The following modules are available:
 - [Streams](./streams/)
 - [Service Connectors](./service-connectors/)
 
-Within each module you find an *examples* folder. Each example is a fully runnable Terraform configuration that you can quickly test and put to use by modifying the input data according to your own needs.  
+Within each module you find an *examples* folder. Each example is a fully runnable Terraform configuration that you can quickly test and put to use by modifying the input data according to your own needs.
 
 The modules support being a passed an object containing references to OCIDs (Oracle Cloud IDs) that they may depend on. Every input attribute that expects an OCID (typically, attribute names ending in *_id* or *_ids*) can be given either a literal OCID or a reference (a key) to the OCID. While these OCIDs can be literally obtained from their sources and pasted when setting the modules input attributes, a superior approach is automatically consuming the outputs of producing modules. For every module there is a semi-ready fully functional example of running a module with external dependencies. For instance, check the [Notifications module example](./notifications/examples/external_dependency/). The external dependency approach helps with the creation of loosely coupled Terraform configurations with clearly defined dependencies between them, avoiding copying and pasting OCIDs.
 

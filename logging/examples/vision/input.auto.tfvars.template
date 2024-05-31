@@ -27,7 +27,7 @@ region               = "<REPLACE-BY-YOUR-TENANCY-REGION>"      # This is your re
 logging_configuration = {
 
   default_compartment_id = "<REPLACE-BY-COMPARTMENT-OCID>"
-  
+
   log_groups = {
     VCN-FLOW-LOG-GROUP = {
       name = "vision-vcn-flow-log-group"

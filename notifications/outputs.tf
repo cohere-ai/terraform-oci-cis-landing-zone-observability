@@ -3,10 +3,10 @@
 
 output "topics" {
   description = "The topics."
-  value = var.enable_output ? oci_ons_notification_topic.these : null
+  value       = var.enable_output ? oci_ons_notification_topic.these : null
 }
 
 output "subscriptions" {
   description = "The subscriptions."
-  value = var.enable_output ? oci_ons_subscription.these : null
+  value       = var.enable_output ? oci_ons_subscription.these : null
 }

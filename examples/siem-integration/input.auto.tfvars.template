@@ -4,7 +4,7 @@
 #--------------------------------------------------------------------------------------------------------------------------------------
 # 1. Rename this file to <project-name>.auto.tfvars, where <project-name> is a name of your choice.
 # 2. Provide values for "Tenancy Connectivity Variables".
-# 3. Replace <REPLACE-BY-COMPARTMENT-OCID> placeholders by appropriate compartment OCIDs. 
+# 3. Replace <REPLACE-BY-COMPARTMENT-OCID> placeholders by appropriate compartment OCIDs.
 #--------------------------------------------------------------------------------------------------------------------------------------
 
 #---------------------------------------
@@ -24,6 +24,6 @@ region               = "<your tenancy region>"      # This is your region, where
 # Input variables
 #---------------------------------------
 
-stream_compartment_ocid            = "<REPLACE-BY-COMPARTMENT-OCID>"  
-service_connector_compartment_ocid = "<REPLACE-BY-COMPARTMENT-OCID>" 
+stream_compartment_ocid            = "<REPLACE-BY-COMPARTMENT-OCID>"
+service_connector_compartment_ocid = "<REPLACE-BY-COMPARTMENT-OCID>"
 logs_compartment_ocids             = ["<REPLACE-BY-COMPARTMENT-OCID>"] # add as many as needed.

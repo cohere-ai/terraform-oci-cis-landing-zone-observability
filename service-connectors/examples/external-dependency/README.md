@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This example shows how to deploy Service Connectors resources in OCI using the [Service Connector module](../..). It creates one service connector that reads all tenancy audit logs and non-audit logs from a specific compartment and sends them to an externally managed strem. The example obtains its dependencies from OCI Object Storage objects, specified in *oci_compartments_object_name* and *oci_streams_object_name* variables. 
+This example shows how to deploy Service Connectors resources in OCI using the [Service Connector module](../..). It creates one service connector that reads all tenancy audit logs and non-audit logs from a specific compartment and sends them to an externally managed strem. The example obtains its dependencies from OCI Object Storage objects, specified in *oci_compartments_object_name* and *oci_streams_object_name* variables.
 
 As this example needs to read from an OCI Object Storage bucket, the following extra permissions are required for the executing user, in addition to the permissions required by the [Service Connector module](../..) itself.
 

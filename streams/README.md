@@ -2,7 +2,7 @@
 
 ![Landing Zone logo](../landing_zone_300.png)
 
-This module manages streams in Oracle Cloud Infrastructure (OCI) based on a single configuration object. OCI Streaming service provides a fully managed, scalable, and durable solution for ingesting and consuming high-volume data streams in real-time. Streams are recommended for use cases where data is produced and processed continually and sequentially in a publish-subscribe messaging model. 
+This module manages streams in Oracle Cloud Infrastructure (OCI) based on a single configuration object. OCI Streaming service provides a fully managed, scalable, and durable solution for ingesting and consuming high-volume data streams in real-time. Streams are recommended for use cases where data is produced and processed continually and sequentially in a publish-subscribe messaging model.
 
 Check [module specification](./SPEC.md) for a full description of module requirements, supported variables, managed resources and outputs.
 
@@ -17,7 +17,7 @@ Check the [examples](./examples/) folder for actual module usage.
 ## <a name="requirements">Requirements</a>
 ### IAM Permissions
 
-This module requires the following OCI IAM permissions in the compartments where streams, keys (if encrypting streams with a customer managed key) and networking components (if deploying streams with private endpoints) are defined. 
+This module requires the following OCI IAM permissions in the compartments where streams, keys (if encrypting streams with a customer managed key) and networking components (if deploying streams with private endpoints) are defined.
 
 For deploying streams:
 ```
@@ -60,7 +60,7 @@ experiments = [module_variable_optional_attrs]
 ```
 ## <a name="invoke">How to Invoke the Module</a>
 
-Terraform modules can be invoked locally or remotely. 
+Terraform modules can be invoked locally or remotely.
 
 For invoking the module locally, just set the module *source* attribute to the module file path (relative path works). The following example assumes the module is two folders up in the file system.
 ```
@@ -88,7 +88,7 @@ In this module, streams are defined using the *streams_configuration* object, th
 - **default_defined_tags**: the default defined tags that are applied to all resources managed by this module. It can be overriden by *defined_tags* attribute in each resource.
 - **default_freeform_tags**: the default freeform tags that are applied to all resources managed by this module. It can be overriden by *freeform_tags* attribute in each resource.
 - **streams**: the streams.
-- **stream_pools**: any custom stream pools. 
+- **stream_pools**: any custom stream pools.
 
 ## Defining Streams
 
@@ -130,7 +130,7 @@ streams = {
 
 ## Defining (Custom) Stream Pools
 
-Within *streams_configuration*, use the *stream_pools* attribute to define custom stream pools managed by this module. Each stream pool is defined as an object whose key must be unique and must not be changed once defined. As a convention, use uppercase strings for the keys. 
+Within *streams_configuration*, use the *stream_pools* attribute to define custom stream pools managed by this module. Each stream pool is defined as an object whose key must be unique and must not be changed once defined. As a convention, use uppercase strings for the keys.
 
 In OCI, every stream belongs to a stream pool, that defines common characteristics for all contained streams. A stream that is not explicitly assigned to a stream pool gets assigned to the Default stream pool.
 
@@ -146,7 +146,7 @@ The *stream_pools* attribute supports the following attributes:
   - **auto_create_topics_enabled**: determines whether topics are automatically created on the server. This is the equivalent to the Kafka setting "auto.create.topics.enable" Default is false.
   - **bootstrap_servers**: the bootstrap servers to use with Kafka client.
   - **log_retention_in_hours**: determines for how long messages are kept in the stream pool streams. Default is 24 hours.
-  - **num_partitions**: the number of stream partitions in the stream pool. Default is 1 partition.  
+  - **num_partitions**: the number of stream partitions in the stream pool. Default is 1 partition.
 - **defined_tags**: the stream pool defined tags. *default_defined_tags* is used if this is not defined.
 - **freeform_tags**: the stream pool freeform tags. *default_freeform_tags* is used if this is not defined.
 

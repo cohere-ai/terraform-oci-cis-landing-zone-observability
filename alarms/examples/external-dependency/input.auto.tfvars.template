@@ -4,14 +4,14 @@
 #------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 # 1. Rename this file to <project-name>.auto.tfvars, where <project-name> is a name of your choice.
 # 2. Provide values for "Tenancy Connectivity Variables".
-# 3. Replace <REPLACE-BY-COMPARTMENT-REFERENCE> placeholders by the appropriate compartment references, 
+# 3. Replace <REPLACE-BY-COMPARTMENT-REFERENCE> placeholders by the appropriate compartment references,
 #    expected to be found in the OCI Object Storage object specified in oci_compartments_dependency. Or utilize the reserved key "TENANCY-ROOT" for the root compartment OCID.
-# 4. Replace <REPLACE-BY-TOPIC-REFERENCE> placeholders by the appropriate topic references, 
+# 4. Replace <REPLACE-BY-TOPIC-REFERENCE> placeholders by the appropriate topic references,
 #    expected to be found in the OCI Object Storage object specified in oci_topics_dependency.
 # 5. Replace <REPLACE-BY-BUCKET-NAME> placeholder by the OCI Object Storage bucket for configuration sharing across modules.
-# 6. Replace <REPLACE-BY-OBJECT-NAME-FOR-COMPARTMENTS> placeholder by the OCI Object Storage object with the compartments references. This 
+# 6. Replace <REPLACE-BY-OBJECT-NAME-FOR-COMPARTMENTS> placeholder by the OCI Object Storage object with the compartments references. This
 #    object is tipically stored in OCI Object Storage by the module that manages compartments.
-# 7. Replace <REPLACE-BY-OBJECT-NAME-FOR-TOPICS> placeholder by the OCI Object Storage object to with the topic references. This 
+# 7. Replace <REPLACE-BY-OBJECT-NAME-FOR-TOPICS> placeholder by the OCI Object Storage object to with the topic references. This
 #    object is tipically stored in OCI Object Storage by the module that manages topics.
 #-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -32,7 +32,7 @@ region               = "<your tenancy region>"      # This is your region, where
 
 alarms_configuration = {
   default_compartment_id = null
-  
+
   alarms = {
     COMPUTE-ALARM-HIGH-CPU-KEY = {
       compartment_id = "<REPLACE-BY-COMPARTMENT-REFERENCE>"

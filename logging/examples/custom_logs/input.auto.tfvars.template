@@ -28,7 +28,7 @@ region               = "<REPLACE-BY-YOUR-TENANCY-REGION>"      # This is your re
 logging_configuration = {
 
   default_compartment_id = "<REPLACE-BY-COMPARTMENT-OCID>"
-  
+
   log_groups = {
     CUSTOM-LOG-GROUP = {
       name = "custom-log-group"
@@ -69,5 +69,3 @@ external_dependency = {
   cmp_dependency   = ["<REPLACE-BY-OBJECT-NAME>"]
 }
 */
-
-

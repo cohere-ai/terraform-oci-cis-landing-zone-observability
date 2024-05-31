@@ -17,7 +17,7 @@ Check the [examples](./examples/) folder for actual module usage.
 ## <a name="requirements">Requirements</a>
 ### IAM Permissions
 
-This module requires the following OCI IAM permissions in the compartments where service connectors, logs, policies, buckets and streams are defined. 
+This module requires the following OCI IAM permissions in the compartments where service connectors, logs, policies, buckets and streams are defined.
 
 For deploying service connectors:
 ```
@@ -60,7 +60,7 @@ experiments = [module_variable_optional_attrs]
 ```
 ## <a name="invoke">How to Invoke the Module</a>
 
-Terraform modules can be invoked locally or remotely. 
+Terraform modules can be invoked locally or remotely.
 
 For invoking the module locally, just set the module *source* attribute to the module file path (relative path works). The following example assumes the module is two folders up in the file system.
 ```
@@ -87,8 +87,8 @@ In this module, service connectors are defined using the *service_connectors_con
 - **default_compartment_id**: the default compartment for all resources managed by this module. It can be overriden by *compartment_id* attribute in each resource. This attribute is overloaded: it can be either a compartment OCID or a reference (a key) to the compartment OCID.
 - **default_defined_tags**: the default defined tags that are applied to all resources managed by this module. It can be overriden by *defined_tags* attribute in each resource.
 - **default_freeform_tags**: the default freeform tags that are applied to all resources managed by this module. It can be overriden by *freeform_tags* attribute in each resource.
-- **service_connectors**: define the service connectors, their source and target. 
-- **buckets**: define the buckets managed by this module that can be used as targets. 
+- **service_connectors**: define the service connectors, their source and target.
+- **buckets**: define the buckets managed by this module that can be used as targets.
 - **streams**: define the streams managed by this module that can be used as targets.
 - **topics**: define the topics managed by this module that can be used as targets.
 
@@ -97,7 +97,7 @@ In this module, service connectors are defined using the *service_connectors_con
 ### Defining the Service Connectors
 
 #### Naming Service Connectors
-Within the *service_connectors* attribute, use *display_name* attribute to name service connectors and *description* for a text description. 
+Within the *service_connectors* attribute, use *display_name* attribute to name service connectors and *description* for a text description.
 
 #### Activating Service Connectors
 Service connectors are created in "INACTIVE" state by default. Within the *service_connectors* attribute, set the *activate* attribute to true for activating service connectors.
@@ -130,7 +130,7 @@ source = {
 #### Filtering Logging Data
 Captured logging data can be filtered before before sent to the target. Within the *service_connectors* attribute, use the *log_rule_filter* attribute to specify a filter. In Service Connector terminology, a log rule filter is known as a Log Filter Task, that only applies to sources of the "logging" kind. It is essentially a boolean expression that filters the data that match the criteria.
 
-The following example defines a rule that filters logging data by VCN ocid and region: 
+The following example defines a rule that filters logging data by VCN ocid and region:
 ```
 log_rule_filter = "data.vcnId='ocid1.vcn.oc1..amaaaa...mwq' AND data.region='us_ashburn-1'"
 ```
@@ -139,8 +139,8 @@ log_rule_filter = "data.vcnId='ocid1.vcn.oc1..amaaaa...mwq' AND data.region='us_
 Within the *service_connectors* attribute, use the *target* attribute to define the service connector target resource, i.e., where all source data gets aggregated into. Within *target*, the following attributes are supported:
 - **kind**: the type of target. Supported values are "objectstorage", "streaming", "functions", "logginganalytics", and "notifications".
 - **bucket_name**: the existing bucket name. Only applicable if kind is "objectstorage". This attribute is overloaded: it can be either a literal bucket name or a reference (a key) to the bucket name.
-- **bucket_batch_rollover_size_in_mbs**: the bucket batch rollover size in megabytes. Only applicable if kind is "objectstorage". 
-- **bucket_batch_rollover_time_in_ms** : the bucket batch rollover time in milliseconds. Only applicable if kind is "objectstorage". 
+- **bucket_batch_rollover_size_in_mbs**: the bucket batch rollover size in megabytes. Only applicable if kind is "objectstorage".
+- **bucket_batch_rollover_time_in_ms** : the bucket batch rollover time in milliseconds. Only applicable if kind is "objectstorage".
 - **bucket_object_name_prefix**: the prefix of objects eventually created in the bucket. Only applicable if kind is "objectstorage".
 - **stream_id**: the target stream. Only applicable if kind is "streaming". This attribute is overloaded: it can be either a stream OCID or a reference (a key) to the stream OCID.
 - **topic_id**: the target topic. Only applicable if kind is "notifications". This attribute is overloaded: it can be either a topic OCID or a reference (a key) to the topic OCID.
@@ -206,14 +206,14 @@ buckets = {
       }
     }
   }
-} 
+}
 ```
 
 ### Defining Target Streams
 Within *service_connectors_configuration*, use the *streams* attribute to define the streams managed by this module. Within *streams*, the following attributes are supported:
 - **name**: the stream name
 - **compartment_id**: the compartment where the stream is created. *default_compartment_id* is used if undefined. This attribute is overloaded: it can be either a compartment OCID or a reference (a key) to the compartment OCID.
-- **partitions**: the number of stream partitions. Default is "1".  
+- **partitions**: the number of stream partitions. Default is "1".
 - **retention_in_hours**: for how long to keep messages in the stream. Default is "24" hours.
 - **defined_tags**: the stream defined_tags. *default_defined_tags* is used if this is not defined.
 - **freeform_tags**: the stream freeform_tags. *default_freeform_tags* is used if this is not defined.
@@ -233,7 +233,7 @@ streams = {
 ### Defining Target Topics
 Within *service_connectors_configuration*, use the *topics* attribute to define the topics managed by this module. Within *topics*, the following attributes are supported:
 - **name**: the topic name.
-- **description**: the topic description. *name* is used if this is not defined. 
+- **description**: the topic description. *name* is used if this is not defined.
 - **compartment_id**: the compartment where the topic is created. *default_compartment_id* is used if undefined. This attribute is overloaded: it can be either a compartment OCID or a reference (a key) to the compartment OCID.
 - **subscriptions**: a list of objects describing the parties that receive topic notifications. Each object is defined by a *protocol* and a list of values for that protocol:
     - **protocol** : one of the following supported values: "EMAIL", "CUSTOM_HTTPS", "PAGERDUTY", "SLACK", "ORACLE_FUNCTIONS", "SMS".
@@ -249,9 +249,9 @@ topics = {
     compartment_id = "ocid1.compartment.oc1..aaaaaa...4ja"
     subscriptions = [
       { protocol = "EMAIL", values : ["email.address@example.com"]}
-    ]  
+    ]
   }
-}    
+}
 ```
 
 ## External Dependencies
@@ -290,7 +290,7 @@ service_connectors_configuration = {
         kind = "objectstorage"
         bucket_name = "SERVICE-CONNECTOR-BUCKET-KEY"
       }
-    }  
+    }
   }
   buckets = {
     SERVICE-CONNECTOR-BUCKET-KEY = { # this key is referred by bucket_name within target attribute
@@ -299,8 +299,8 @@ service_connectors_configuration = {
       cis_level = "2"
       kms_key_id = "ocid1.key.oc1..kkkkk..uir"
     }
-  } 
-} 
+  }
+}
 ```
 
 ## <a name="related">Related Documentation</a>

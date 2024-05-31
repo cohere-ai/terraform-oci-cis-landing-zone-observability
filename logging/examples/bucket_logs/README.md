@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This example shows how to deploy bucket logs in bulk using the [CIS OCI Logging module](../../). The target buckets are dynamically retrieved based on the specified target compartments (*target_compartment_ids* attribute). 
+This example shows how to deploy bucket logs in bulk using the [CIS OCI Logging module](../../). The target buckets are dynamically retrieved based on the specified target compartments (*target_compartment_ids* attribute).
 It deploys the following resources:
 - One log group.
 - One log for each retrieved bucket. Logs are distinct for bucket read and bucket write operations.

@@ -2,7 +2,7 @@
 
 ![Landing Zone logo](../landing_zone_300.png)
 
-This module manages log groups and logs in Oracle Cloud Infrastructure (OCI) based on a single configuration object. Logging provides access to logs from Oracle Cloud Infrastructure resources. These logs include critical diagnostic information that describes how resources are performing and being accessed. 
+This module manages log groups and logs in Oracle Cloud Infrastructure (OCI) based on a single configuration object. Logging provides access to logs from Oracle Cloud Infrastructure resources. These logs include critical diagnostic information that describes how resources are performing and being accessed.
 
 Check [module specification](./SPEC.md) for a full description of module requirements, supported variables, managed resources and outputs.
 
@@ -70,7 +70,7 @@ experiments = [module_variable_optional_attrs]
 ```
 ## <a name="invoke">How to Invoke the Module</a>
 
-Terraform modules can be invoked locally or remotely. 
+Terraform modules can be invoked locally or remotely.
 
 For invoking the module locally, just set the module *source* attribute to the module file path (relative path works). The following example assumes the module is two folders up in the file system.
 ```
@@ -105,7 +105,7 @@ The *default_* attributes are the following:
 - **default_defined_tags**: (Optional) The default defined tags that are applied to all resources managed by this module. It can be overriden by *defined_tags* attribute in each resource.
 - **default_freeform_tags**: (Optional) The default freeform tags that are applied to all resources managed by this module. It can be overriden by *freeform_tags* attribute in each resource.
 
-The module can also be used to create Logging Analytics log groups and enable Logging Analytics. 
+The module can also be used to create Logging Analytics log groups and enable Logging Analytics.
 
 To disable Logging Analytics, navigate to the Logging Analytics service page on the Console and select the "Service Details" section on the bottom left menu. From there, disable Logging Analytics by clicking the red "Terminate" button.
 
@@ -113,13 +113,13 @@ To disable Logging Analytics, navigate to the Logging Analytics service page on 
 - **onboard_logging_analytics**: (Optional) Whether your tenancy will enable Logging Analytics. Set to true ONLY if wish to onboard your tenancy to Logging Analytics, set to false if your tenancy has ALREADY enabled Logging Analytics. Check in Console. Default is false.
 - **log_groups**: A map of log groups. In OCI, every log must belong to a log group.
   - **compartment_id**: (Optional) The compartment where the log group is created. *default_compartment_id* is used if undefined. This attribute is overloaded: it can be either a compartment OCID or a reference (a key) to the compartment OCID. See [External Dependencies](#extdep) section.
-  - **type**: (Optional) Include this value and set it to "logging_analytics" to create a Logging Analytics log group, otherwise a default log group will be created. 
-  - **name**: The log group name.             
-  - **description**: (Optional) The log group description. It defaults to log group name if undefined.      
+  - **type**: (Optional) Include this value and set it to "logging_analytics" to create a Logging Analytics log group, otherwise a default log group will be created.
+  - **name**: The log group name.
+  - **description**: (Optional) The log group description. It defaults to log group name if undefined.
   - **defined_tags**: (Optional) The log group defined tags. *default_defined_tags* is used if undefined.
-  - **freeform_tags**: (Optional) The log group freeform tags. *default_freeform_tags* is used if undefined.   
+  - **freeform_tags**: (Optional) The log group freeform tags. *default_freeform_tags* is used if undefined.
 
-### Defining Service Logs  
+### Defining Service Logs
 - **service_logs**: (Optional) A map of service logs. **Use this when defining service logs for single resources**. Logs are created in the same compartment as the enclosing log group.
   - **name**: The log name.
   - **log_group_id**: The log group. The value should be one of the reference keys defined in *log_groups*.
@@ -127,7 +127,7 @@ To disable Logging Analytics, navigate to the Logging Analytics service page on 
   - **category**: The category name within each service. This is service specific and valid values may change over time. See [Services Integrated with the Logging Services and their Categories](#services).
   - **resource_id**: The resource id to create the log for.
   - **is_enabled**: (Optional) Whether the log is enabled. Default is true.
-  - **retention_duration**: (Optional) The log retention duration in 30-day increments. Valida values are 30, 60, 90, 120, 150, 180. Default is 30. 
+  - **retention_duration**: (Optional) The log retention duration in 30-day increments. Valida values are 30, 60, 90, 120, 150, 180. Default is 30.
   - **defined_tags**: (Optional) The log defined tags. *default_defined_tags* is used if undefined.
   - **freeform_tags**: (Optional) The log freeform tags. *default_freeform_tags* is used if undefined.
 
@@ -138,22 +138,22 @@ To disable Logging Analytics, navigate to the Logging Analytics service page on 
   - **target_resource_type** The target resource type for flow logs. Valid values: "vcn", "subnet", "vnic".
   - **target_compartment_ids** The list of compartments containing the resources of type defined in target_resource_type to create flow logs for. The module searches for all resources of target_resource_type in these compartments. For "vnic" target_resource_type, NLB (Network Load Balancer) private IP VNICs are also included.
   - **is_enabled**: (Optional) Whether the flow logs are enabled. Default is true.
-  - **retention_duration**: (Optional) The flow log retention duration in 30-day increments. Valida values are 30, 60, 90, 120, 150, 180. Default is 30. 
+  - **retention_duration**: (Optional) The flow log retention duration in 30-day increments. Valida values are 30, 60, 90, 120, 150, 180. Default is 30.
   - **defined_tags**: (Optional) The flow log defined tags. *default_defined_tags* is used if undefined.
   - **freeform_tags**: (Optional) The flow log freeform tags. *default_freeform_tags* is used if undefined.
 
-### Defining Bucket Logs  
+### Defining Bucket Logs
 - **bucket_logs**: A map of bucket logs. **Use this when defining bucket logs in bulk within specified compartments**. Logs are created in the same compartment as the enclosing bucket log group.
   - **name_prefix**: (Optional) a prefix to bucket log names.
   - **log_group_id**: The bucket log group. The value should be one of the reference keys defined in *log_groups*.
   - **target_compartment_ids**: The list of compartments containing the buckets to create logs for. The module seaeches for all buckets in these compartments.
   - **category**: The category of operations to enable the bucket logs for. Valid values: "read" or "write".
   - **is_enabled**: (Optional) Whether the bucket logs are enabled. Default is true.
-  - **retention_duration**: (Optional) The bucket log retention duration in 30-day increments. Valida values are 30, 60, 90, 120, 150, 180. Default is 30. 
+  - **retention_duration**: (Optional) The bucket log retention duration in 30-day increments. Valida values are 30, 60, 90, 120, 150, 180. Default is 30.
   - **defined_tags**: (Optional) The bucket log defined tags. *default_defined_tags* is used if undefined.
   - **freeform_tags**: (Optional) The bucket log freeform tags. *default_freeform_tags* is used if undefined.
 
-### Defining Custom Logs  
+### Defining Custom Logs
 - **custom_logs**: A map of custom logs. **Use this when defining custom logs for single resources**. Logs are created in the same compartment as the enclosing log group.
   - **compartment_id**: (Optional) The compartment where log is created. *default_compartment_id* is used if undefined. This attribute is overloaded: it can be either a compartment OCID or a reference (a key) to the compartment OCID.
   - **name**: The log name.
@@ -162,7 +162,7 @@ To disable Logging Analytics, navigate to the Logging Analytics service page on 
   - **parser_type**: (Optional) The type of fluent parser. Valid values: "NONE", "SYSLOG", "CSV", "TSV", "REGEXP", "MULTILINE", "APACHE_ERROR", "APACHE2", "AUDITD", "JSON", "CRI". Default is "NONE".
   - **path**: Absolute paths for log source files. Wildcards can be used.
   - **is_enabled**: (Optional) Whether the log is enabled. Default is true.
-  - **retention_duration**: (Optional) The log retention duration in 30-day increments. Valida values are 30, 60, 90, 120, 150, 180. Default is 30. 
+  - **retention_duration**: (Optional) The log retention duration in 30-day increments. Valida values are 30, 60, 90, 120, 150, 180. Default is 30.
   - **defined_tags**: (Optional) The log defined tags. *default_defined_tags* is used if undefined.
   - **freeform_tags**: (Optional) The log freeform tags. *default_freeform_tags* is used if undefined.
 
@@ -171,7 +171,7 @@ To disable Logging Analytics, navigate to the Logging Analytics service page on 
 As of Oct/2023, these are the OCI services that are integrated with the Logging service. Use this as reference to fill in *service* and *category* attributes when creating logs using the *service_log* attribute.
 For any updates, use OCI CLI to execute ```oci logging service list```.
 
-Service | Service Name | Categories 
+Service | Service Name | Categories
 --------------|-------------|-------------
 Analytics Cloud |"oacnativeproduction" | "audit", "diagnostic"
 API Gateway | "apigateway" | "access", "execution"
